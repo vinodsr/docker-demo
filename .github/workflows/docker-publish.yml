@@ -33,7 +33,7 @@ jobs:
 
 
       - name: Log into registry
-        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u vinodsr --password-stdin
+        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login --username vinodsr
 
       - name: Push image
         run: |
