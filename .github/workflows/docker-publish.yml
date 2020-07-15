@@ -38,7 +38,7 @@ jobs:
 
       - name: Push image
         run: |
-          sed
+          
           docker build -t vinodsr/docker-demo:black --build-arg BUILD_COLOR=black .
           docker push vinodsr/docker-demo:black
           
