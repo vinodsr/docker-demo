@@ -16,7 +16,8 @@ app.get('/', function (req, res) {
     res.render('index', {
         data: {
             hostname: os.hostname(),
-            secret: content
+            secret: content,
+            time: new Date()
         }
     })
 })
