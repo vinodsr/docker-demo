@@ -1,0 +1,42 @@
+name: Docker
+
+on:
+  push:
+    # Publish `master` as Docker `latest` image.
+    branches:
+      - master
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+  # Run tests for any PRs.
+  pull_request:
+
+env:
+  # TODO: Change variable to your image's name.
+  IMAGE_NAME: vinodsr/docker-demo
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }} 
+
+jobs:
+  # Run tests.
+  # See also https://docs.docker.com/docker-hub/builds/automated-testing
+  # Push image to GitHub Packages.
+  # See also https://docs.docker.com/docker-hub/builds/
+  push:
+
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v2
+
+
+
+      - name: Log into registry
+        run: docker login --username vinodsr -p ${DOCKER_PASSWORD}
+
+      - name: Push image
+        run: |
+          docker build -t vinodsr/docker-demo:black .
+          docker push vinodsr/docker-demo:black
