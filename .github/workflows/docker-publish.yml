@@ -36,17 +36,19 @@ jobs:
       - name: Log into registry
         run: docker login --username vinodsr -p ${DOCKER_PASSWORD}
 
-      - name: Push image
+      - name: Push image - black
         run: |
-          
           docker build -t vinodsr/docker-demo:black --build-arg BUILD_COLOR=black .
           docker push vinodsr/docker-demo:black
-          
+      - name: Push image - green
+        run: | 
           docker build -t vinodsr/docker-demo:green --build-arg BUILD_COLOR=green .
           docker push vinodsr/docker-demo:green
-          
-          docker build -t vinodsr/docker-demo:green --build-arg BUILD_COLOR=tomato .
+      - name: Push image - red
+        run: | 
+          docker build -t vinodsr/docker-demo:red --build-arg BUILD_COLOR=tomato .
           docker push vinodsr/docker-demo:red
-          
-          docker build -t vinodsr/docker-demo:green --build-arg BUILD_COLOR=lightskyblue .
+      - name: Push image - blue
+        run: | 
+          docker build -t vinodsr/docker-demo:blue --build-arg BUILD_COLOR=lightskyblue .
           docker push vinodsr/docker-demo:blue          
