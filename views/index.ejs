@@ -7,7 +7,7 @@
     <title>Dummy Application</title>
     <style>
         .main {
-            background-color: black;
+            background-color: <%=data.color %>;
             color: white;
             width: 500px;
         }
@@ -32,7 +32,7 @@
         </div>
         <div style="margin-top: 20px;">
             Hostname : <%= data.hostname %> <br />
-            Time : <%= data.time %>
+            Time : <%= data.time %><br />
             Secret : <%= data.secret %>
         </div>
     </div>

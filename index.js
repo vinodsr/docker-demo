@@ -17,7 +17,8 @@ app.get('/', function (req, res) {
         data: {
             hostname: os.hostname(),
             secret: content,
-            time: new Date()
+            time: new Date(),
+            color: process.env["COLOR"] ? process.env["COLOR"] : "black"
         }
     })
 })
